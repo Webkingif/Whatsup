@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, UserCircle, Settings } from 'lucide-react';
+import { Search, UserCircle, Settings, MessageSquarePlus, MessageSquare } from 'lucide-react';
 import { useChatStore } from '../store/chatStore';
 import { usersService, UserProfile } from '../services/users';
 import { messagesService } from '../services/messages';
@@ -68,20 +68,34 @@ export function Sidebar() {
     <div className="w-80 h-full bg-white border-r border-gray-200 flex flex-col">
       <div className="p-4 border-b border-gray-200 bg-gray-50 flex items-center justify-between">
         <h2 className="text-xl font-bold text-gray-900 tracking-tight">Whatsup</h2>
-        <button onClick={logout} className="text-gray-500 hover:text-red-600 transition-colors" title="Logout">
-          <Settings className="w-5 h-5" />
-        </button>
+        <div className="flex items-center space-x-3">
+          <button 
+            onClick={() => document.getElementById('user-search-input')?.focus()} 
+            className="text-gray-500 hover:text-blue-600 transition-colors bg-white p-1.5 rounded-md shadow-sm border border-gray-200" 
+            title="New Conversation"
+          >
+            <MessageSquarePlus className="w-5 h-5" />
+          </button>
+          <button 
+            onClick={logout} 
+            className="text-gray-500 hover:text-red-600 transition-colors p-1.5" 
+            title="Logout"
+          >
+            <Settings className="w-5 h-5" />
+          </button>
+        </div>
       </div>
       
-      <div className="p-4">
+      <div className="p-4 bg-white border-b border-gray-200">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search className="h-4 w-4 text-gray-400" />
           </div>
           <input
+            id="user-search-input"
             type="text"
-            placeholder="Search users..."
-            className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-shadow"
+            placeholder="Search users to start a chat..."
+            className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

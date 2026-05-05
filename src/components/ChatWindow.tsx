@@ -163,15 +163,59 @@ export function ChatWindow({ sendWsMessage }: { sendWsMessage: (to_user_id: stri
 
   if (!activeConversationId) {
     return (
-      <div className="flex-1 bg-gray-50 flex flex-col items-center justify-center">
-        <div className="text-center p-8 max-w-sm">
-          <div className="mx-auto w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6">
-            <Lock className="w-8 h-8 text-blue-500" />
+      <div className="flex-1 flex flex-col bg-white">
+        {/* Header */}
+        <div className="px-6 py-4 border-b border-gray-200 bg-white/80 backdrop-blur-md sticky top-0 z-10 flex items-center justify-between">
+          <h3 className="text-lg font-semibold text-gray-900">
+            Whatsup Team
+          </h3>
+          <div className="flex items-center px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium border border-blue-100 shadow-sm">
+            System Message
           </div>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-2">Whatsup Web</h2>
-          <p className="text-gray-500">
-            Select a conversation on the left to start messaging. All messages are securely end-to-end encrypted.
-          </p>
+        </div>
+
+        {/* Messages Area */}
+        <div className="flex-1 overflow-y-auto p-6 bg-gray-50/50">
+          <div className="flex justify-center mb-8">
+             <div className="mx-auto w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center">
+              <Lock className="w-8 h-8 text-blue-500" />
+            </div>
+          </div>
+          <div className="space-y-6">
+            <div className="flex justify-start">
+              <div className="max-w-[70%] px-4 py-3 rounded-2xl shadow-sm text-[15px] leading-relaxed bg-white border border-gray-200 text-gray-900 rounded-bl-sm">
+                <p className="whitespace-pre-wrap break-words">
+                  Welcome to Whatsup! 👋
+{'\n\n'}
+We are thrilled to have you here. Whatsup is a secure, End-to-End Encrypted (E2EE) messaging application. Your messages are completely private—meaning nobody, not even the app developers, can read your messages.
+{'\n\n'}
+To get started, select an existing chat on the left or use the search bar to find people and start a new conversation.
+                </p>
+                <div className="text-[10px] mt-1.5 text-right flex items-center justify-end space-x-1 text-gray-400">
+                  <span>Now</span>
+                  <Lock className="w-2.5 h-2.5" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Input Area */}
+        <div className="p-4 bg-white border-t border-gray-200">
+          <div className="flex space-x-2">
+            <input
+              type="text"
+              disabled
+              placeholder="You cannot reply to system messages..."
+              className="flex-1 bg-gray-50 border border-gray-200 px-4 py-2.5 rounded-full text-sm focus:outline-none transition-shadow opacity-60 cursor-not-allowed"
+            />
+            <button
+              disabled
+              className="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center shadow-sm opacity-60 cursor-not-allowed"
+            >
+              <Send className="w-4 h-4 -ml-0.5" />
+            </button>
+          </div>
         </div>
       </div>
     );
