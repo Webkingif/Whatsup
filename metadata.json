@@ -1,0 +1,6 @@
+{
+  "name": "WhisperBox",
+  "description": "Secure End-to-End Encrypted (E2EE) messaging application.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
