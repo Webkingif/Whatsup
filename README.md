@@ -1,4 +1,4 @@
-# Whatsup (Powered by WhisperBox API)
+# Whatsup (Powered by WhisperBox API) (Uncompleted)
 
 Whatsup is a secure, End-to-End Encrypted (E2EE) messaging application built with React, Vite, and Tailwind CSS. It leverages the Web Crypto API to ensure zero-knowledge architecture, meaning the WhisperBox server never sees the plaintext contents of your messages or your private keys.
 
